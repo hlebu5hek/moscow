@@ -8,14 +8,13 @@ public class PlayerMovementCtrl : MovementCtrl
 {
     [SerializeField] private Transform _target;
     [SerializeField] private LayerMask _raycast, _interact;
-    
+
     private Camera cam;
-    
-    public KeyCode Forward = KeyCode.W, 
-        Backward = KeyCode.S, 
-        Left = KeyCode.A, 
-        Right = KeyCode.D
-        ;
+
+    public KeyCode Forward = KeyCode.W,
+        Backward = KeyCode.S,
+        Left = KeyCode.A,
+        Right = KeyCode.D;
 
     protected void Awake()
     {
@@ -27,30 +26,26 @@ public class PlayerMovementCtrl : MovementCtrl
 
     private void CheckInput()
     {
-        if(Input.GetKeyDown(Forward)) AddVector(new(1, 1));
-        if(Input.GetKeyUp(Forward)) AddVector(new(-1, -1));
-        if(Input.GetKeyDown(Backward)) AddVector(new(-1, -1));
-        if(Input.GetKeyUp(Backward)) AddVector(new(1, 1));
-        if(Input.GetKeyDown(Left)) AddVector(new(-1, 1));
-        if(Input.GetKeyUp(Left)) AddVector(new(1, -1));
-        if(Input.GetKeyDown(Right)) AddVector(new(1, -1));
-        if(Input.GetKeyUp(Right)) AddVector(new(-1, 1));
-        
+        if (Input.GetKeyDown(Forward)) AddVector(new(1, 1));
+        if (Input.GetKeyUp(Forward)) AddVector(new(-1, -1));
+        if (Input.GetKeyDown(Backward)) AddVector(new(-1, -1));
+        if (Input.GetKeyUp(Backward)) AddVector(new(1, 1));
+        if (Input.GetKeyDown(Left)) AddVector(new(-1, 1));
+        if (Input.GetKeyUp(Left)) AddVector(new(1, -1));
+        if (Input.GetKeyDown(Right)) AddVector(new(1, -1));
+        if (Input.GetKeyUp(Right)) AddVector(new(-1, 1));
+
         Rotate(_target, true);
-        
+
         Move();
     }
-    
-    
+
+
     private void GetMousePosition()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, _raycast))
-        {
-            _target.position = hit.point;
-        }
-        if (Physics.Raycast(ray, out hit, 100, _interact))
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, _interact))
         {
             _target.position = hit.collider.gameObject.transform.position;
             InteractableObject io = hit.collider.gameObject.GetComponent<InteractableObject>();
