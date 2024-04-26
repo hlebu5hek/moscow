@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7532783329302117237}
   - component: {fileID: 7532783329302117238}
   m_Layer: 0
-  m_Name: Base Text
+  m_Name: Answer Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282187548
-  m_fontColor: {r: 0.10849059, g: 1, b: 0.23652875, a: 1}
+  m_fontColor: {r: 0, g: 0.4245283, b: 0.059845448, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
