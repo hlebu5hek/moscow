@@ -2,27 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractableObject : MonoBehaviour
 {
-     [SerializeField] protected RoomOne room;
-     
-     public Action OnMouseEnter, OnMouseExit, OnPlayerEnter, OnPlayerExit, OnInteractMouse, OnInteractE;
+    [SerializeField] protected RoomOne room;
 
-     protected virtual void Awake()
-     {
-          
-     }
+    public UnityEvent OnMouseEnter, OnMouseExit, OnPlayerEnter, OnPlayerExit, OnInteractMouse, OnInteractE;
+    
 
-     private void OnTriggerEnter(Collider other)
-     {
-          OnPlayerEnter?.Invoke();
-          PlayerInteracter.PI.SetInteractableObject(this, false);
-     }
+    protected virtual void Awake()
+    {
+    }
 
-     private void OnTriggerExit(Collider other)
-     {
-          OnPlayerExit?.Invoke();
-          PlayerInteracter.PI.ResetInteractableObject(this);
-     }
+    private void OnTriggerEnter(Collider other)
+    {
+        OnPlayerEnter?.Invoke();
+        PlayerInteracter.PI.SetInteractableObject(this, false);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        OnPlayerExit?.Invoke();
+        PlayerInteracter.PI.ResetInteractableObject(this);
+    }
 }

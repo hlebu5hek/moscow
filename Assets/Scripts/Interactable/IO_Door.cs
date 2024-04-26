@@ -11,7 +11,7 @@ public class IO_Door : Door
     protected override void Awake()
     {
         base.Awake();
-        OnInteractE += ChangeState;
+        OnInteractE.AddListener(ChangeState);
     }
 
     protected void ChangeState()

@@ -46,12 +46,12 @@ public class DialogViewer : MonoBehaviour
 
         TextData textData = ContentContainer.texts[currentText];
         TMP_Text text = Instantiate(textPrefab, textContainer);
-        float symbolTime = textData.delayTime / textData.text.Length;
+        float symbolTimePerSec = textData.delayTime / textData.text.Length;
         text.text += "* ";
         foreach (var symbol in textData.text)
         {
             text.text += symbol;
-            yield return new WaitForSeconds(symbolTime);
+            yield return new WaitForSeconds(symbolTimePerSec);
         }
 
         if (textData.variants.Length > 0)
