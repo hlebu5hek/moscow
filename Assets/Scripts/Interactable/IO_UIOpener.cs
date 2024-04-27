@@ -20,7 +20,8 @@ public class IO_UIOpener : InteractableObject
     {
         if(activateOnStart)
             Activate();
-
+        
+        canvas.SetActive(false);
         HideOutline();
     }
     

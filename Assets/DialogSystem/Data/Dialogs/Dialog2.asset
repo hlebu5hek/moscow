@@ -17,7 +17,7 @@ MonoBehaviour:
       \u0441\u0432\u0430\u0440\u0438\u0442\u044C?"
     nextIndex: -1
     delayTime: 1
-    player: 0
+    player: 1
     variants:
     - text: "\u0427\u0451\u0440\u043D\u044B\u0439"
       toIndex: 3
@@ -30,21 +30,21 @@ MonoBehaviour:
       \u043E\u0434\u043D\u0430 \u043A\u043D\u043E\u043F\u043A\u0430."
     nextIndex: -1
     delayTime: 2
-    player: 0
+    player: 1
     variants: []
-  - text: "\u041D\u0438\u043A\u043E\u0433\u043E \u0431\u0430\u0440\u0438\u0441\u0442\u044B
+  - text: "\u041D\u0438\u043A\u0430\u043A\u043E\u0433\u043E \u0431\u0430\u0440\u0438\u0441\u0442\u044B
       \u0434\u043B\u044F \u043F\u043E\u0434\u043E\u0431\u043D\u043E\u0433\u043E \u0442\u0443\u0442
       \u043D\u0435 \u043D\u0430\u0439\u0442\u0438."
     nextIndex: 0
     delayTime: 2
-    player: 0
+    player: 1
     variants: []
   - text: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u044B\u0439 \u0447\u0435\u0440\u043D\u044B\u0439
       \u043A\u043E\u0444\u0435 \u043D\u0430\u043F\u043E\u043B\u043D\u044F\u0435\u0442
       \u043A\u0440\u0443\u0436\u043A\u0443."
     nextIndex: -1
     delayTime: 2
-    player: 0
+    player: 1
     variants:
     - text: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C..."
       toIndex: -1

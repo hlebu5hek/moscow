@@ -41,6 +41,7 @@ public class PlayerMovementCtrl : MovementCtrl
         if (Input.GetKeyUp(Left)) AddVector(new(1, -1));
         if (Input.GetKeyDown(Right)) AddVector(new(1, -1));
         if (Input.GetKeyUp(Right)) AddVector(new(-1, 1));
+        if(Input.GetKeyDown(KeyCode.Escape)) SetVector(Vector2.zero);
 
         Rotate(_target, true);
 

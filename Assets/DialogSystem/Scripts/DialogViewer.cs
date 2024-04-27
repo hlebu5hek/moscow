@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using MiniGames.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +13,8 @@ namespace DialogSystem.Scripts
 {
     public class DialogViewer : MonoBehaviour
     {
-        public ContentContainer ContentContainer;
+        public List<ContentContainer> ContentContainer;
+        public int current;
         private ScrollRect ScrollRect;
         public int currentText;
         public float textPause = 1;
@@ -20,6 +24,8 @@ namespace DialogSystem.Scripts
         public ChoiceView choiceViewPrefab;
         [Header("Events")] public UnityEvent onEndDialog;
 
+        [SerializeField] private bool isDebug;
+        
         private void Awake()
         {
             ScrollRect = GetComponentInChildren<ScrollRect>();
@@ -28,11 +34,23 @@ namespace DialogSystem.Scripts
         private void Update()
         {
             ScrollRect.normalizedPosition = new Vector2(0, 0);
-            ;
         }
-
-        public void StartDialog()
+        
+        public void StartDialog(int dialog, BaseMinigame game)
         {
+            onEndDialog.RemoveAllListeners();
+
+            if (game)
+            {
+                onEndDialog.AddListener(game.StartGame);
+                game.onGameFinished.AddListener(parent.End);
+            }
+            else
+            {
+                onEndDialog.AddListener(parent.End);
+            }
+            
+            current = dialog;
             currentText = 0;
             StartCoroutine(ShowText());
         }
@@ -44,7 +62,7 @@ namespace DialogSystem.Scripts
                 id = currentText + 1;
             }
 
-            if (id < ContentContainer.texts.Length)
+            if (id < ContentContainer[current].texts.Length)
             {
                 currentText = id;
                 StartCoroutine(ShowText());
@@ -57,7 +75,7 @@ namespace DialogSystem.Scripts
 
         void EndDialog()
         {
-            onEndDialog.Invoke();
+            onEndDialog?.Invoke();
         }
 
         public TMP_Text AddText(string txt, bool alt = false)
@@ -69,14 +87,17 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
-            TextData textData = ContentContainer.texts[currentText];
+            TextData textData = ContentContainer[current].texts[currentText];
             TMP_Text text = !textData.player ? AddText("- ") : AddText("");
 
             float symbolTime = textData.delayTime / textData.text.Length;
             foreach (var symbol in textData.text)
             {
                 text.text += symbol;
-                yield return new WaitForSeconds(symbolTime);
+                if(!isDebug)
+                    yield return new WaitForSeconds(symbolTime);
+                else
+                    yield return new WaitForEndOfFrame();
             }
 
             if (textData.variants.Length > 0)
@@ -85,7 +106,10 @@ namespace DialogSystem.Scripts
             }
             else
             {
-                yield return new WaitForSeconds(textPause);
+                if(!isDebug)
+                    yield return new WaitForSeconds(textPause);
+                else
+                    yield return new WaitForEndOfFrame();
                 NextText(textData.nextIndex);
             }
         }
@@ -94,6 +118,13 @@ namespace DialogSystem.Scripts
         {
             ChoiceView choiceView = Instantiate(choiceViewPrefab, textContainer);
             choiceView.SetTexts(this, variants);
+        }
+        
+        [SerializeField] private IO_UIOpener parent;
+    
+        public void SetParentUIOpener(IO_UIOpener par)
+        {
+            parent = par;
         }
     }
 }
