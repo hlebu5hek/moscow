@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using MiniGames.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,8 +10,7 @@ namespace DialogSystem.Scripts
 {
     public class DialogViewer : MonoBehaviour
     {
-        public List<ContentContainer> ContentContainer;
-        public int current;
+        public ContentContainer ContentContainer;
         private ScrollRect ScrollRect;
         public int currentText;
         public float textPause = 1;
@@ -32,23 +28,11 @@ namespace DialogSystem.Scripts
         private void Update()
         {
             ScrollRect.normalizedPosition = new Vector2(0, 0);
+            ;
         }
-        
-        public void StartDialog(int dialog, BaseMinigame game)
-        {
-            onEndDialog.RemoveAllListeners();
 
-            if (game)
-            {
-                onEndDialog.AddListener(game.StartGame);
-                game.onGameFinished.AddListener(parent.End);
-            }
-            else
-            {
-                onEndDialog.AddListener(parent.End);
-            }
-            
-            current = dialog;
+        public void StartDialog()
+        {
             currentText = 0;
             StartCoroutine(ShowText());
         }
@@ -60,7 +44,7 @@ namespace DialogSystem.Scripts
                 id = currentText + 1;
             }
 
-            if (id < ContentContainer[current].texts.Length)
+            if (id < ContentContainer.texts.Length)
             {
                 currentText = id;
                 StartCoroutine(ShowText());
@@ -73,7 +57,7 @@ namespace DialogSystem.Scripts
 
         void EndDialog()
         {
-            onEndDialog?.Invoke();
+            onEndDialog.Invoke();
         }
 
         public TMP_Text AddText(string txt, bool alt = false)
@@ -85,7 +69,7 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
-            TextData textData = ContentContainer[current].texts[currentText];
+            TextData textData = ContentContainer.texts[currentText];
             TMP_Text text = !textData.player ? AddText("- ") : AddText("");
 
             float symbolTime = textData.delayTime / textData.text.Length;
@@ -110,13 +94,6 @@ namespace DialogSystem.Scripts
         {
             ChoiceView choiceView = Instantiate(choiceViewPrefab, textContainer);
             choiceView.SetTexts(this, variants);
-        }
-        
-        [SerializeField] private IO_UIOpener parent;
-    
-        public void SetParentUIOpener(IO_UIOpener par)
-        {
-            parent = par;
         }
     }
 }
