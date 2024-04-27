@@ -35,9 +35,11 @@ public class SceneTransition : MonoBehaviour
         if (shouldPlayOpeningAnimation) 
         {
             componentAnimator.SetTrigger("sceneOpening");
-            instance.LoadingProgressBar.fillAmount = 1;
-            
-            // Чтобы если следующий переход будет обычным SceneManager.LoadScene, не проигрывать анимацию opening:
+            if (instance.LoadingProgressBar != null)
+            {
+                instance.LoadingProgressBar.fillAmount = 1;
+
+            }
             shouldPlayOpeningAnimation = false; 
         }
     }
