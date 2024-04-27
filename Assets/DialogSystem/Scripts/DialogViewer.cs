@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -5,18 +6,16 @@ using MiniGames.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace DialogSystem.Scripts
 {
     public class DialogViewer : MonoBehaviour
     {
-<<<<<<< Updated upstream
-        public ContentContainer ContentContainer;
-=======
         public List<ContentContainer> ContentContainer;
         public int current;
         private ScrollRect ScrollRect;
->>>>>>> Stashed changes
         public int currentText;
         public float textPause = 1;
         [Header("UI")] public Transform textContainer;
@@ -25,9 +24,6 @@ namespace DialogSystem.Scripts
         public ChoiceView choiceViewPrefab;
         [Header("Events")] public UnityEvent onEndDialog;
 
-<<<<<<< Updated upstream
-        public void StartDialog()
-=======
         private void Awake()
         {
             ScrollRect = GetComponentInChildren<ScrollRect>();
@@ -39,7 +35,6 @@ namespace DialogSystem.Scripts
         }
         
         public void StartDialog(int dialog, BaseMinigame game)
->>>>>>> Stashed changes
         {
             onEndDialog.RemoveAllListeners();
 
@@ -70,8 +65,10 @@ namespace DialogSystem.Scripts
                 currentText = id;
                 StartCoroutine(ShowText());
             }
-
-            EndDialog();
+            else
+            {
+                EndDialog();
+            }
         }
 
         void EndDialog()
@@ -88,14 +85,9 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
-<<<<<<< Updated upstream
-            TMP_Text text = AddText("* ");
-            TextData textData = ContentContainer.texts[currentText];
-=======
             TextData textData = ContentContainer[current].texts[currentText];
             TMP_Text text = !textData.player ? AddText("- ") : AddText("");
 
->>>>>>> Stashed changes
             float symbolTime = textData.delayTime / textData.text.Length;
             foreach (var symbol in textData.text)
             {
