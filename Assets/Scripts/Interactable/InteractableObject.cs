@@ -14,6 +14,8 @@ public class InteractableObject : MonoBehaviour
      {
           OnPlayerEnter += ShowOutline;
           OnPlayerExit += HideOutline;
+          
+          HideOutline();
      }
      
      private void ShowOutline()
@@ -28,13 +30,13 @@ public class InteractableObject : MonoBehaviour
                _outline.enabled = false;
      }
 
-     private void OnTriggerEnter(Collider other)
+     protected virtual void OnTriggerEnter(Collider other)
      {
           OnPlayerEnter?.Invoke();
           PlayerInteracter.PI.SetInteractableObject(this, false);
      }
 
-     private void OnTriggerExit(Collider other)
+     protected virtual void OnTriggerExit(Collider other)
      {
           OnPlayerExit?.Invoke();
           PlayerInteracter.PI.ResetInteractableObject(this);

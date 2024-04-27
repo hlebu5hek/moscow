@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Door : InteractableObject
 {
-    [SerializeField] protected bool _isopen;
     [SerializeField] protected Animator _anim;
     [SerializeField] protected bool isopen_anim;
 
+    public bool _isopen;
+    public int Rooms;
     protected override void Awake()
     {
         room.OnEnter += CheckState;
@@ -37,5 +38,14 @@ public class Door : InteractableObject
     public virtual void SetAnimState()
     {
         isopen_anim = _isopen;
+    }
+
+    public void CheckRoomExit()
+    {
+        if (Rooms <= 0)
+        {
+            Rooms = 0;
+            gameObject.SetActive(false);
+        }
     }
 }

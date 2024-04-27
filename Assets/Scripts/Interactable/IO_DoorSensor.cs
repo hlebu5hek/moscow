@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class IO_DoorSensor : IO_Door
 {
-    [SerializeField] private IO_DoorSensor secondSide;
-    
     protected override void Awake()
     {
+        base.Awake();
         OnPlayerEnter += Open;
         OnPlayerExit += Close;
     }
@@ -17,8 +16,6 @@ public class IO_DoorSensor : IO_Door
         if (_isopen && !isopen_anim)
         {
             _anim.SetTrigger("open");
-            secondSide.gameObject.SetActive(true);
-            secondSide.Open();
         }
     }
     
@@ -27,8 +24,23 @@ public class IO_DoorSensor : IO_Door
         if(isopen_anim)
         {
             _anim.SetTrigger("close");
-            isopen_anim = false;
-            secondSide.gameObject.SetActive(false);
         }
+    }
+
+    protected override void CheckState()
+    {
+        
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        _isopen = true;
+        OnPlayerEnter?.Invoke();
+    }
+
+    protected override void OnTriggerExit(Collider other)
+    {
+        _isopen = false;
+        OnPlayerExit?.Invoke();
     }
 }

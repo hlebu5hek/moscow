@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomOne : MonoBehaviour
 {
     [SerializeField] private GameObject props, walls, floor;
+    [SerializeField] private List<Door> doors;
     [SerializeField] private bool start;
     
     public Action OnEnter, OnExit;
@@ -15,8 +16,19 @@ public class RoomOne : MonoBehaviour
         props = transform.Find("Props").gameObject;
         floor = transform.Find("Floor").gameObject;
         walls = transform.Find("Walls").gameObject;
-        
-        if (start) Enter();
+
+        if (start)
+        {
+            Enter();
+            foreach (var d in doors)
+            {
+                d.Rooms += 1;
+                if (!d.gameObject.activeInHierarchy)
+                {
+                    d.gameObject.SetActive(true);
+                }
+            }
+        }
         else Exit();
     }
     private void OnTriggerEnter(Collider other)
@@ -31,6 +43,14 @@ public class RoomOne : MonoBehaviour
 
     protected virtual void Enter()
     {
+        foreach (var d in doors)
+        {
+            d.Rooms += 1;
+            if (!d.gameObject.activeInHierarchy)
+            {
+                d.gameObject.SetActive(true);
+            }
+        }
         props.SetActive(true);
         walls.SetActive(true); //TODO: remove later
         OnEnter?.Invoke();
@@ -38,6 +58,11 @@ public class RoomOne : MonoBehaviour
 
     protected virtual void Exit()
     {
+        foreach (var d in doors)
+        {
+            d.Rooms -= 1;
+            d.CheckRoomExit();
+        }
         props.SetActive(false);
         walls.SetActive(false); //TODO: remove later
         OnExit?.Invoke();
