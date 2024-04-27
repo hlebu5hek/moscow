@@ -12,7 +12,7 @@ public class Weapon : InteractableObject
 
     protected override void Awake()
     {
-        OnInteractE.AddListener(PickUp);
+        OnInteractE += PickUp;
     }
 
     private void PickUp()

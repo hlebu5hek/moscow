@@ -11,7 +11,7 @@ public class IO_Key : InteractableObject
 
     protected override void Awake()
     {
-        OnInteractE.AddListener(AddKey);
+        OnInteractE += AddKey;
     }
 
     private void AddKey()
