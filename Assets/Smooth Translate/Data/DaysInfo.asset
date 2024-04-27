@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b63838172699a4fab7877d91cc96a2, type: 3}
   m_Name: DaysInfo
   m_EditorClassIdentifier: 
-  days: []
+  days:
+  - dayName: "\u0414\u0435\u043D\u044C 1"
+    dayDescription: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0438\u043C\u0435\u043D\u043D\u043E
+      \u044F?"
+  - dayName: "\u0414\u0435\u043D\u044C 2"
+    dayDescription: "\u0421\u043B\u043E\u043D \u0438\u0437 \u043C\u0445\u0430"
+  - dayName: "\u0414\u0435\u043D\u044C 3"
+    dayDescription: "\u042F \u0435\u0434\u0443 \u043A\u0440\u044B\u0448\u0435\u0439"
