@@ -7,6 +7,7 @@ using UnityEngine;
 public class IO_Key : InteractableObject
 {
     [SerializeField] private string _name;
+    [SerializeField] private bool _destr;
 
     protected override void Awake()
     {
@@ -16,6 +17,8 @@ public class IO_Key : InteractableObject
     private void AddKey()
     {
         PlayerInventoryKeys.PIK.AddKey(_name, 1);
-        gameObject.SetActive(false);
+        OnInteractE -= AddKey;
+        if (_destr) gameObject.SetActive(false);
+        else GetComponent<Collider>().enabled = false;
     }
 }

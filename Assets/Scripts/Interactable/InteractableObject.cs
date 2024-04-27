@@ -6,12 +6,26 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
      [SerializeField] protected RoomOne room;
+     [SerializeField] private Outline _outline;
      
      public Action OnMouseEnter, OnMouseExit, OnPlayerEnter, OnPlayerExit, OnInteractMouse, OnInteractE;
 
      protected virtual void Awake()
      {
-          
+          OnPlayerEnter += ShowOutline;
+          OnPlayerExit += HideOutline;
+     }
+     
+     private void ShowOutline()
+     {
+          if(_outline)
+               _outline.enabled = true;
+     }
+    
+     private void HideOutline()
+     {
+          if(_outline)
+               _outline.enabled = false;
      }
 
      private void OnTriggerEnter(Collider other)

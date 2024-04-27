@@ -17,6 +17,8 @@ public class PlayerMovementCtrl : MovementCtrl
         Right = KeyCode.D
         ;
 
+    public static PlayerMovementCtrl PMC;
+    
     protected void Awake()
     {
         cam = Camera.main;
