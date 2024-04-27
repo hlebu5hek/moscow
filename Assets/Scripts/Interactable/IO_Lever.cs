@@ -9,8 +9,8 @@ public class IO_Lever : InteractableObject
 
     protected override void Awake()
     {
-        OnInteractE += ChangeState;
-        OnInteractMouse += ChangeState;
+        OnInteractE.AddListener(ChangeState);
+        OnInteractMouse.AddListener(ChangeState);
     }
 
     protected void ChangeState()
