@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Tasks.Scripts.Core
 {
@@ -17,11 +18,15 @@ namespace Tasks.Scripts.Core
 
         public List<SubTaskView> subtasksList;
 
+        public List<UnityEvent> Events;
+        public int currentEvent;
+        
         private void Awake()
         {
             taskManager = Instantiate(taskManager);
             taskManager.SetSingletone();
             taskManager.onTaskCompleted.AddListener(UpdateTask);
+            taskManager.onTaskCompleted.AddListener(OnEventNext);
             taskManager.onSubtaskCompleted.AddListener(UpdateSubtask);
             taskManager.onSubtaskEdited.AddListener(UpdateSubtask);
             UpdateTask();
@@ -43,6 +48,12 @@ namespace Tasks.Scripts.Core
         private void UpdateSubtask(int index)
         {
             subtasksList[index].UpdateProgress(taskManager.CurrentTask.subtasks[index]);
+        }
+
+        public void OnEventNext()
+        {
+            Events[currentEvent]?.Invoke();
+            currentEvent++;
         }
     }
 }

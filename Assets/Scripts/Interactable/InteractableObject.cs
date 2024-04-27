@@ -18,13 +18,13 @@ public class InteractableObject : MonoBehaviour
           HideOutline();
      }
      
-     private void ShowOutline()
+     protected void ShowOutline()
      {
           if(_outline)
                _outline.enabled = true;
      }
     
-     private void HideOutline()
+     protected void HideOutline()
      {
           if(_outline)
                _outline.enabled = false;
