@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace DialogSystem.Scripts
 {
     public class DialogViewer : MonoBehaviour
     {
         public ContentContainer ContentContainer;
+        private ScrollRect ScrollRect;
         public int currentText;
         public float textPause = 1;
         [Header("UI")] public Transform textContainer;
@@ -15,6 +19,16 @@ namespace DialogSystem.Scripts
         public TMP_Text answerPrefab;
         public ChoiceView choiceViewPrefab;
         [Header("Events")] public UnityEvent onEndDialog;
+
+        private void Awake()
+        {
+            ScrollRect = GetComponentInChildren<ScrollRect>();
+        }
+
+        private void Update()
+        {
+            ScrollRect.normalizedPosition = new Vector2(0, 0);;
+        }
 
         public void StartDialog()
         {
@@ -34,8 +48,11 @@ namespace DialogSystem.Scripts
                 currentText = id;
                 StartCoroutine(ShowText());
             }
+            else
+            {
+                EndDialog();
+            }
 
-            EndDialog();
         }
 
         void EndDialog()
@@ -70,6 +87,7 @@ namespace DialogSystem.Scripts
                 yield return new WaitForSeconds(textPause);
                 NextText(textData.nextIndex);
             }
+            
         }
 
         public void ShowVariants(TextVariant[] variants)
