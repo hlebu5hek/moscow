@@ -27,7 +27,8 @@ namespace DialogSystem.Scripts
 
         private void Update()
         {
-            ScrollRect.normalizedPosition = new Vector2(0, 0);;
+            ScrollRect.normalizedPosition = new Vector2(0, 0);
+            ;
         }
 
         public void StartDialog()
@@ -52,7 +53,6 @@ namespace DialogSystem.Scripts
             {
                 EndDialog();
             }
-
         }
 
         void EndDialog()
@@ -69,8 +69,9 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
-            TMP_Text text = AddText("* ");
             TextData textData = ContentContainer.texts[currentText];
+            TMP_Text text = !textData.player ? AddText("- ") : AddText("");
+
             float symbolTime = textData.delayTime / textData.text.Length;
             foreach (var symbol in textData.text)
             {
@@ -87,7 +88,6 @@ namespace DialogSystem.Scripts
                 yield return new WaitForSeconds(textPause);
                 NextText(textData.nextIndex);
             }
-            
         }
 
         public void ShowVariants(TextVariant[] variants)
