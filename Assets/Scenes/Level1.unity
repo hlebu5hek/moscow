@@ -153,19 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dead7e343076489e1f1ec6a896363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _graphType: 1
-  updateGraph: 1
-  canvas: {fileID: 109699310}
-  activePointIndex: -1
-  fixedPointIndex: -1
-  canInteract: 0
-  mouseActionType: 0
-  rectangleType: 0
-  rectangleSelectionType: 0
-  rectangleSelectionPhase: 0
-  pointSelectionType: 0
-  targetZoom: {x: 1, y: 1}
-  targetMoveOffset: {x: -200, y: -200}
 --- !u!114 &634233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,56 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2941600a24e0c2488854313d2965777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePeriod: 5
-  graphSize: {x: 420, y: 360}
-  graphScale: {x: 184, y: 104}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 5
-  outlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  lineWidth: 8
-  lineColor: {r: 1, g: 0.35, b: 0, a: 1}
-  PointSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  pointRadius: 5
-  pointColor: {r: 1, g: 0.35, b: 0, a: 1}
-  pointHoverRadius: 15
-  PointHoverSpeed: 5
-  pointHoverColor: {r: 1, g: 0.6, b: 0, a: 1}
-  pointLockedRadius: 17
-  PointLockedSpeed: 5
-  pointLockedColor: {r: 1, g: 0.8, b: 0, a: 1}
-  unfixedPointOutlineWidth: 10
-  unfixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  unfixedPointOutlineHoverWidth: 15
-  UnfixedPointOutlineHoverSpeed: 5
-  unfixedPointOutlineHoverColor: {r: 0, g: 0.5, b: 1, a: 1}
-  fixedPointOutlineWidth: 17
-  FixedPointOutlineSpeed: 5
-  fixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  GridTextFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  gridSpacing: {x: 0, y: 0}
-  xAxisWidth: 3
-  xAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextSize: 10
-  xAxisTextOffset: 10
-  yAxisWidth: 3
-  yAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextSize: 10
-  yAxisTextOffset: 10
-  xGridWidth: 2
-  xGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  yGridWidth: 2
-  yGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  zoomSelectionColor: {r: 0, g: 0.8, b: 1, a: 0.2}
-  zoomSelectionOutlineWidth: 5
-  zoomSelectionOutlineColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  pointSelectionColor: {r: 1, g: 0.35, b: 0, a: 0.2}
-  pointSelectionOutlineWidth: 5
-  pointSelectionOutlineColor: {r: 1, g: 0.35, b: 0, a: 0.4}
-  ZoomSpeed: 5
-  SmoothZoomSpeed: 20
-  SmoothMoveSpeed: 20
 --- !u!4 &634234
 Transform:
   m_ObjectHideFlags: 0
@@ -2878,7 +2815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192bc393a16c28d47ad7f2445d3d17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressImage: {fileID: 1646929544}
 --- !u!114 &278672539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,17 +2971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb1cf59aa9adee49ad2d4618d7d6381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGameFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  gameView: {fileID: 0}
-  onSubMinigameFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  gameViews:
-  - {fileID: 1332742762}
-  - {fileID: 1802328462}
-  curIndex: 0
 --- !u!224 &309281232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3516,19 +3441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dead7e343076489e1f1ec6a896363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _graphType: 0
-  updateGraph: 1
-  canvas: {fileID: 15539887}
-  activePointIndex: -1
-  fixedPointIndex: -1
-  canInteract: 0
-  mouseActionType: 0
-  rectangleType: 0
-  rectangleSelectionType: 0
-  rectangleSelectionPhase: 0
-  pointSelectionType: 0
-  targetZoom: {x: 1, y: 1}
-  targetMoveOffset: {x: -200, y: -200}
 --- !u!114 &362579070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3541,56 +3453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2941600a24e0c2488854313d2965777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePeriod: 5
-  graphSize: {x: 420, y: 360}
-  graphScale: {x: 35, y: 154}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 5
-  outlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  lineWidth: 8
-  lineColor: {r: 1, g: 0.35, b: 0, a: 1}
-  PointSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  pointRadius: 5
-  pointColor: {r: 1, g: 0.35, b: 0, a: 1}
-  pointHoverRadius: 15
-  PointHoverSpeed: 5
-  pointHoverColor: {r: 1, g: 0.6, b: 0, a: 1}
-  pointLockedRadius: 17
-  PointLockedSpeed: 5
-  pointLockedColor: {r: 1, g: 0.8, b: 0, a: 1}
-  unfixedPointOutlineWidth: 10
-  unfixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  unfixedPointOutlineHoverWidth: 15
-  UnfixedPointOutlineHoverSpeed: 5
-  unfixedPointOutlineHoverColor: {r: 0, g: 0.5, b: 1, a: 1}
-  fixedPointOutlineWidth: 17
-  FixedPointOutlineSpeed: 5
-  fixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  GridTextFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  gridSpacing: {x: 0, y: 0}
-  xAxisWidth: 3
-  xAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextSize: 10
-  xAxisTextOffset: 10
-  yAxisWidth: 3
-  yAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextSize: 10
-  yAxisTextOffset: 10
-  xGridWidth: 2
-  xGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  yGridWidth: 2
-  yGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  zoomSelectionColor: {r: 0, g: 0.8, b: 1, a: 0.2}
-  zoomSelectionOutlineWidth: 5
-  zoomSelectionOutlineColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  pointSelectionColor: {r: 1, g: 0.35, b: 0, a: 0.2}
-  pointSelectionOutlineWidth: 5
-  pointSelectionOutlineColor: {r: 1, g: 0.35, b: 0, a: 0.4}
-  ZoomSpeed: 5
-  SmoothZoomSpeed: 20
-  SmoothMoveSpeed: 20
 --- !u!4 &362579071
 Transform:
   m_ObjectHideFlags: 0
@@ -9235,8 +9097,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "> \u0413\u043B\u0430\u0432\u0430 1"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
+  m_sharedMaterial: {fileID: -6982740614989831018, guid: 3846a9af142b27549af35826da118468,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9266,7 +9129,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -10171,19 +10034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dead7e343076489e1f1ec6a896363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _graphType: 0
-  updateGraph: 1
-  canvas: {fileID: 1059917167}
-  activePointIndex: -1
-  fixedPointIndex: -1
-  canInteract: 0
-  mouseActionType: 0
-  rectangleType: 0
-  rectangleSelectionType: 0
-  rectangleSelectionPhase: 0
-  pointSelectionType: 0
-  targetZoom: {x: 1, y: 1}
-  targetMoveOffset: {x: -200, y: -200}
 --- !u!114 &687008576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10196,56 +10046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2941600a24e0c2488854313d2965777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePeriod: 5
-  graphSize: {x: 420, y: 360}
-  graphScale: {x: 166, y: 33}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 5
-  outlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  lineWidth: 8
-  lineColor: {r: 0, g: 1, b: 0.054832935, a: 1}
-  PointSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  pointRadius: 1
-  pointColor: {r: 0.014359593, g: 1, b: 0, a: 1}
-  pointHoverRadius: 1
-  PointHoverSpeed: 5
-  pointHoverColor: {r: 0.035793543, g: 1, b: 0, a: 1}
-  pointLockedRadius: 17
-  PointLockedSpeed: 5
-  pointLockedColor: {r: 1, g: 0.8, b: 0, a: 1}
-  unfixedPointOutlineWidth: 10
-  unfixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  unfixedPointOutlineHoverWidth: 15
-  UnfixedPointOutlineHoverSpeed: 5
-  unfixedPointOutlineHoverColor: {r: 0, g: 0.5, b: 1, a: 1}
-  fixedPointOutlineWidth: 17
-  FixedPointOutlineSpeed: 5
-  fixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  GridTextFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  gridSpacing: {x: 0, y: 0}
-  xAxisWidth: 3
-  xAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextSize: 10
-  xAxisTextOffset: 10
-  yAxisWidth: 3
-  yAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextSize: 10
-  yAxisTextOffset: 10
-  xGridWidth: 2
-  xGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  yGridWidth: 2
-  yGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  zoomSelectionColor: {r: 0, g: 0.8, b: 1, a: 0.2}
-  zoomSelectionOutlineWidth: 5
-  zoomSelectionOutlineColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  pointSelectionColor: {r: 1, g: 0.35, b: 0, a: 0.2}
-  pointSelectionOutlineWidth: 5
-  pointSelectionOutlineColor: {r: 1, g: 0.35, b: 0, a: 0.4}
-  ZoomSpeed: 5
-  SmoothZoomSpeed: 20
-  SmoothMoveSpeed: 20
 --- !u!4 &687008577
 Transform:
   m_ObjectHideFlags: 0
@@ -12258,7 +12058,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12322,7 +12122,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &819869498
@@ -12490,7 +12290,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12554,7 +12354,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &851626425
@@ -12865,7 +12665,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12929,7 +12729,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &867677198
@@ -13000,7 +12800,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13064,7 +12864,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &867822940
@@ -13983,7 +13783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &958251991
 Transform:
   m_ObjectHideFlags: 0
@@ -14374,11 +14174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00d8b7f48a034c4e82d892fa83c3f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceGraph: {fileID: 634232}
-  targetGraph: {fileID: 1111161562}
-  sliderX: {fileID: 1893653265}
-  sliderY: {fileID: 1492292748}
-  _progressBar: {fileID: 1378091558}
 --- !u!1 &1059917166
 GameObject:
   m_ObjectHideFlags: 0
@@ -14703,19 +14498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1dead7e343076489e1f1ec6a896363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _graphType: 1
-  updateGraph: 1
-  canvas: {fileID: 1284789447}
-  activePointIndex: -1
-  fixedPointIndex: -1
-  canInteract: 0
-  mouseActionType: 0
-  rectangleType: 0
-  rectangleSelectionType: 0
-  rectangleSelectionPhase: 0
-  pointSelectionType: 0
-  targetZoom: {x: 1, y: 1}
-  targetMoveOffset: {x: -200, y: -200}
 --- !u!114 &1111161563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14728,56 +14510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2941600a24e0c2488854313d2965777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePeriod: 5
-  graphSize: {x: 420, y: 360}
-  graphScale: {x: 55, y: 33}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 5
-  outlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  lineWidth: 8
-  lineColor: {r: 0, g: 1, b: 0.054832935, a: 1}
-  PointSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  pointRadius: 1
-  pointColor: {r: 0.014359593, g: 1, b: 0, a: 1}
-  pointHoverRadius: 1
-  PointHoverSpeed: 5
-  pointHoverColor: {r: 0.035793543, g: 1, b: 0, a: 1}
-  pointLockedRadius: 17
-  PointLockedSpeed: 5
-  pointLockedColor: {r: 1, g: 0.8, b: 0, a: 1}
-  unfixedPointOutlineWidth: 10
-  unfixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  unfixedPointOutlineHoverWidth: 15
-  UnfixedPointOutlineHoverSpeed: 5
-  unfixedPointOutlineHoverColor: {r: 0, g: 0.5, b: 1, a: 1}
-  fixedPointOutlineWidth: 17
-  FixedPointOutlineSpeed: 5
-  fixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
-  GridTextFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  gridSpacing: {x: 0, y: 0}
-  xAxisWidth: 3
-  xAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextSize: 10
-  xAxisTextOffset: 10
-  yAxisWidth: 3
-  yAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextSize: 10
-  yAxisTextOffset: 10
-  xGridWidth: 2
-  xGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  yGridWidth: 2
-  yGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  zoomSelectionColor: {r: 0, g: 0.8, b: 1, a: 0.2}
-  zoomSelectionOutlineWidth: 5
-  zoomSelectionOutlineColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  pointSelectionColor: {r: 1, g: 0.35, b: 0, a: 0.2}
-  pointSelectionOutlineWidth: 5
-  pointSelectionOutlineColor: {r: 1, g: 0.35, b: 0, a: 0.4}
-  ZoomSpeed: 5
-  SmoothZoomSpeed: 20
-  SmoothMoveSpeed: 20
 --- !u!4 &1111161564
 Transform:
   m_ObjectHideFlags: 0
@@ -14854,7 +14586,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14918,7 +14650,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1116581343
@@ -14982,7 +14714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192bc393a16c28d47ad7f2445d3d17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressImage: {fileID: 468072091}
 --- !u!114 &1118270301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15886,11 +15617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00d8b7f48a034c4e82d892fa83c3f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceGraph: {fileID: 362579069}
-  targetGraph: {fileID: 687008575}
-  sliderX: {fileID: 441579186}
-  sliderY: {fileID: 913707580}
-  _progressBar: {fileID: 278672538}
 --- !u!1 &1275525420
 GameObject:
   m_ObjectHideFlags: 0
@@ -17437,10 +17163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e02866f433ad824aa5be607306a92d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGameFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  gameView: {fileID: 1734993789}
 --- !u!1 &1317917444
 GameObject:
   m_ObjectHideFlags: 0
@@ -18157,7 +17879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192bc393a16c28d47ad7f2445d3d17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressImage: {fileID: 925434983}
 --- !u!114 &1378091559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19625,8 +19346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86d5a86b461ec94394418a37b0bca30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 300
-  borders: {fileID: 1003734805}
 --- !u!114 &1490442188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21477,15 +21196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a122c7feec88d8b48a194749870d3470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 1490442186}
-  zones:
-  - {fileID: 1653042752}
-  - {fileID: 1317917445}
-  - {fileID: 1275525421}
-  currentIndexZone: 0
-  inZone: 0
-  requestZone: 2
-  _progressBar: {fileID: 1118270300}
 --- !u!1 &1739146815
 GameObject:
   m_ObjectHideFlags: 0
@@ -21820,7 +21530,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -21884,7 +21594,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1851128791
@@ -23047,7 +22757,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -23111,7 +22821,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2074880248
@@ -23279,7 +22989,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3846a9af142b27549af35826da118468, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -23343,7 +23053,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2098791851
