@@ -15,7 +15,7 @@ namespace DialogSystem.Scripts
     {
         public string text;
         public int nextIndex = -1; 
-        [Range(0.1f, 3f)]public float delayTime = 1;
+        [Range(0.1f, 5f)]public float delayTime = 1;
         public bool player = true;
         public TextVariant[] variants;
     }
@@ -24,6 +24,6 @@ namespace DialogSystem.Scripts
     public class TextVariant
     {
         public string text;
-        public int toIndex;
+        public int toIndex = -1;
     }
 }
