@@ -1,4 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using MiniGames.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +10,13 @@ namespace DialogSystem.Scripts
 {
     public class DialogViewer : MonoBehaviour
     {
+<<<<<<< Updated upstream
         public ContentContainer ContentContainer;
+=======
+        public List<ContentContainer> ContentContainer;
+        public int current;
+        private ScrollRect ScrollRect;
+>>>>>>> Stashed changes
         public int currentText;
         public float textPause = 1;
         [Header("UI")] public Transform textContainer;
@@ -16,8 +25,35 @@ namespace DialogSystem.Scripts
         public ChoiceView choiceViewPrefab;
         [Header("Events")] public UnityEvent onEndDialog;
 
+<<<<<<< Updated upstream
         public void StartDialog()
+=======
+        private void Awake()
         {
+            ScrollRect = GetComponentInChildren<ScrollRect>();
+        }
+
+        private void Update()
+        {
+            ScrollRect.normalizedPosition = new Vector2(0, 0);
+        }
+        
+        public void StartDialog(int dialog, BaseMinigame game)
+>>>>>>> Stashed changes
+        {
+            onEndDialog.RemoveAllListeners();
+
+            if (game)
+            {
+                onEndDialog.AddListener(game.StartGame);
+                game.onGameFinished.AddListener(parent.End);
+            }
+            else
+            {
+                onEndDialog.AddListener(parent.End);
+            }
+            
+            current = dialog;
             currentText = 0;
             StartCoroutine(ShowText());
         }
@@ -29,7 +65,7 @@ namespace DialogSystem.Scripts
                 id = currentText + 1;
             }
 
-            if (id < ContentContainer.texts.Length)
+            if (id < ContentContainer[current].texts.Length)
             {
                 currentText = id;
                 StartCoroutine(ShowText());
@@ -40,7 +76,7 @@ namespace DialogSystem.Scripts
 
         void EndDialog()
         {
-            onEndDialog.Invoke();
+            onEndDialog?.Invoke();
         }
 
         public TMP_Text AddText(string txt, bool alt = false)
@@ -52,8 +88,14 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
+<<<<<<< Updated upstream
             TMP_Text text = AddText("* ");
             TextData textData = ContentContainer.texts[currentText];
+=======
+            TextData textData = ContentContainer[current].texts[currentText];
+            TMP_Text text = !textData.player ? AddText("- ") : AddText("");
+
+>>>>>>> Stashed changes
             float symbolTime = textData.delayTime / textData.text.Length;
             foreach (var symbol in textData.text)
             {
@@ -76,6 +118,13 @@ namespace DialogSystem.Scripts
         {
             ChoiceView choiceView = Instantiate(choiceViewPrefab, textContainer);
             choiceView.SetTexts(this, variants);
+        }
+        
+        [SerializeField] private IO_UIOpener parent;
+    
+        public void SetParentUIOpener(IO_UIOpener par)
+        {
+            parent = par;
         }
     }
 }

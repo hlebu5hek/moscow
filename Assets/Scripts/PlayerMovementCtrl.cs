@@ -8,7 +8,7 @@ public class PlayerMovementCtrl : MovementCtrl
 {
     [SerializeField] private Transform _target;
     [SerializeField] private LayerMask _raycast, _interact;
-
+    
     private Camera cam;
 
     public KeyCode Forward = KeyCode.W,
@@ -17,9 +17,12 @@ public class PlayerMovementCtrl : MovementCtrl
         Right = KeyCode.D;
 
     public static PlayerMovementCtrl PMC;
+    public bool freezed;
     
     protected void Awake()
     {
+        PMC = this;
+        
         cam = Camera.main;
         _target.SetParent(null);
         GameManager.Upd += CheckInput;
@@ -28,6 +31,8 @@ public class PlayerMovementCtrl : MovementCtrl
 
     private void CheckInput()
     {
+        if (freezed) return;
+        
         if (Input.GetKeyDown(Forward)) AddVector(new(1, 1));
         if (Input.GetKeyUp(Forward)) AddVector(new(-1, -1));
         if (Input.GetKeyDown(Backward)) AddVector(new(-1, -1));

@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using DialogSystem.Scripts;
+using MiniGames.Scripts;
 using Tasks.Scripts.Core;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class IO_UIOpener : InteractableObject
 {
+    [SerializeField] private BaseMinigame game;
     [SerializeField] private bool activateOnStart;
-    [SerializeField] private InteractableUI ui;
+    [SerializeField] private DialogViewer dialog;
+    [SerializeField] private GameObject canvas;
     public int taskInd;
-
-    public UnityEvent OnEnd;
+    public List<int> dialogInd;
+    public int current;
     
     protected override void Awake()
     {
@@ -24,7 +28,7 @@ public class IO_UIOpener : InteractableObject
     {
         OnPlayerEnter += ShowOutline;
         OnPlayerExit += HideOutline;
-        OnInteractE += Test;
+        OnInteractE += ShowUI;
         
         HideOutline();
     }
@@ -40,15 +44,25 @@ public class IO_UIOpener : InteractableObject
     
     protected virtual void ShowUI()
     {
-        ui.gameObject.SetActive(true);
-        ui.SetParentUIOpener(this);
-        PlayerInteracter.PI.enabled = false;
-        PlayerMovementCtrl.PMC.enabled = false;
+        canvas.SetActive(true);
+        dialog.SetParentUIOpener(this);
+        PlayerInteracter.PI.freezed = true;
+        PlayerMovementCtrl.PMC.SetVector(Vector2.zero);
+        PlayerMovementCtrl.PMC.freezed = true;
+        
+        if(game)
+            dialog.StartDialog(dialogInd[current], game);
+        else 
+            dialog.StartDialog(dialogInd[current], null);
+        current++;
     }
 
-    public void Test()
+    public void End()
     {
-        TaskManager.Instant.SetSubtaskProgress(taskInd, 0, 1);
+        if(taskInd != -1)
+            TaskManager.Instant.SetSubtaskProgress(taskInd, 0, 1);
+
+        HideUI();
     }
 
     public void SetTaskInd(int ind)
@@ -58,10 +72,9 @@ public class IO_UIOpener : InteractableObject
     
     public virtual void HideUI()
     {
-        OnEnd?.Invoke();
-        ui.gameObject.SetActive(false);
-        ui.SetParentUIOpener(this);
-        PlayerInteracter.PI.enabled = true;
-        PlayerMovementCtrl.PMC.enabled = true;
+        canvas.SetActive(false);
+        dialog.SetParentUIOpener(this);
+        PlayerInteracter.PI.freezed = false;
+        PlayerMovementCtrl.PMC.freezed = false;
     }
 }
