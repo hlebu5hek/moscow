@@ -13,7 +13,7 @@ namespace MiniGames.Scripts
         public int dialogInd;
         public DialogViewer dv;
 
-        public Action OnEnd; //Kastil
+        public UnityEvent OnEnd; //Kastil
         
         public virtual void StartGame()
         {

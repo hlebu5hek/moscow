@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IO_DoorSensor : IO_Door
 {
+    [SerializeField] private DoorSound sound;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -16,6 +18,7 @@ public class IO_DoorSensor : IO_Door
         if (_isopen && !isopen_anim)
         {
             _anim.SetTrigger("open");
+            sound.OpenDoorSound();
         }
     }
     
@@ -24,6 +27,7 @@ public class IO_DoorSensor : IO_Door
         if(isopen_anim)
         {
             _anim.SetTrigger("close");
+            sound.CloseDoorSound();
         }
     }
 

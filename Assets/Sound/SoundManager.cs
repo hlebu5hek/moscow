@@ -65,6 +65,10 @@ public class SoundManager : MonoBehaviour
         SetBackground(audioClip);
         bAudioSource.volume = startVolume;
     }
-    
+
+    public void StopAmbient()
+    {
+        bAudioSource.Stop();
+    }
     
 }

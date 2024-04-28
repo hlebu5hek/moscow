@@ -55,6 +55,7 @@ public class SceneTransition : MonoBehaviour
             if (loadingSceneOperation.progress >= 0.9f)
             {
                 componentAnimator.SetBool("Loaded", true);
+                SoundManager.Instance.StopAmbient();
             }
         }
     }

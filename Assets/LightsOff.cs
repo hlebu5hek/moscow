@@ -12,7 +12,7 @@ public class LightsOff : MonoBehaviour
 
     private void Start()
     {
-        game.OnEnd += LightOff;
+        game.OnEnd.AddListener(LightOff);
     }
 
     public void LightOff()

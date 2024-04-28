@@ -28,10 +28,10 @@ public class ScreenShadow : MonoBehaviour
     
     public IEnumerator Shadow()
     {
-        for (float i = 0; i < 1; i += 0.01f)
+        for (float i = 0; i < 1; i += 0.02f)
         {
             shadow.color = Color.Lerp(new Color(0,0,0,0), Color.black, i);
-            yield return new WaitForSeconds(shadowdur / 100);
+            yield return new WaitForSeconds(shadowdur / 50);
         }
         shadow.color = Color.black;
     }

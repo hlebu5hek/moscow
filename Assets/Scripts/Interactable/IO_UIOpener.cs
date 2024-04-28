@@ -15,6 +15,8 @@ public class IO_UIOpener : InteractableObject
     public int taskInd;
     public List<int> dialogInd;
     public int current;
+
+    public UnityEvent OnInteract;
     
     protected override void Awake()
     {
@@ -40,11 +42,15 @@ public class IO_UIOpener : InteractableObject
         OnPlayerExit -= HideOutline;
         OnInteractE -= ShowUI;
         
+        PlayerInteracter.PI.ResetInteractableObject(this);
+        
         HideOutline();
     }
     
     protected virtual void ShowUI()
     {
+        OnInteract?.Invoke();
+        
         canvas.SetActive(true);
         dialog.SetParentUIOpener(this);
         PlayerInteracter.PI.freezed = true;

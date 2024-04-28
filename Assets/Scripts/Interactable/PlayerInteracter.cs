@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerInteracter : MonoBehaviour
 {
     [SerializeField] private InteractableObject _ioE, _ioM;
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip click, inter;
 
     public static PlayerInteracter PI;
     public bool freezed;
@@ -20,6 +22,12 @@ public class PlayerInteracter : MonoBehaviour
 
     private void FxUpd()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            source.clip = click;
+            source.Play();
+        }
+        
         if (freezed) return;
         
         if (Input.GetKeyDown(KeyCode.E))
@@ -31,7 +39,10 @@ public class PlayerInteracter : MonoBehaviour
     private void Interaction(bool m)
     {
         if (freezed) return;
-
+        
+        source.clip = inter;
+        source.Play();
+        
         if (m && _ioM) _ioM.OnInteractMouse?.Invoke();
         else if (_ioE) _ioE.OnInteractE?.Invoke();   
     }

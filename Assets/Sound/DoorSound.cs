@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class DoorSound : MonoBehaviour
 {
+    public AudioSource Source;
+    
     public AudioClip openDoor;
     public AudioClip closeDoor;
 
     public void OpenDoorSound()
     {
-        SoundManager.Instance.PlaySoundFX(openDoor, transform.position);
+        Source.clip = openDoor;
+        Source.Play();
     }
     public void CloseDoorSound()
     {
-        SoundManager.Instance.PlaySoundFX(closeDoor, transform.position);
+        Source.clip = closeDoor;
+        Source.Play();
     }
 }
