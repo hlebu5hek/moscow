@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class LightsOff : MonoBehaviour
 {
-    [SerializeField] private Light dir;
+    [SerializeField] private List<GameObject> dir;
+    [SerializeField] private GameObject torch;
     [SerializeField] private BaseMinigame game;
 
     private void Start()
@@ -16,11 +17,27 @@ public class LightsOff : MonoBehaviour
 
     public void LightOff()
     {
-        dir.enabled = false;
+        foreach (var d in dir)
+        {
+            d.SetActive(false);
+        }
+        torch.SetActive(true);
     }
     
     public void LightOn()
     {
-        dir.enabled = true;
+        foreach (var d in dir)
+        {
+            try
+            {
+                d.SetActive(true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        torch.SetActive(false);
     }
 }

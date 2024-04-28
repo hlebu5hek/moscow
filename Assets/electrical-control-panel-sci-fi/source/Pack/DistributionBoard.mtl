@@ -1,0 +1,14 @@
+# Blender 4.0.2 MTL File: 'DistributionBoard.blend'
+# www.blender.org
+
+newmtl DistributionBoard
+Ka 0.912727 0.912727 0.912727
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/DistributionBoard_BaseColor.png
+map_Ns C:/DistributionBoard_Roughness.png
+map_refl C:/DistributionBoard_Metallic.png
+map_d C:/DistributionBoard_Alpha.png
+map_Bump -bm 1.000000 C:/DistributionBoard_Normal.png
