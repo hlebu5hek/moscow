@@ -8,7 +8,6 @@ public class PlayerMovementCtrl : MovementCtrl
 {
     [SerializeField] private Transform _target;
     [SerializeField] private LayerMask _raycast, _interact;
-    
     private Camera cam;
 
     public KeyCode Forward = KeyCode.W,
@@ -43,7 +42,8 @@ public class PlayerMovementCtrl : MovementCtrl
         if (Input.GetKeyUp(Right)) AddVector(new(-1, 1));
         if(Input.GetKeyDown(KeyCode.Escape)) SetVector(Vector2.zero);
 
-        Rotate(_target, true);
+        LookForward();
+        // Rotate(_target, true);
 
         Move();
     }
