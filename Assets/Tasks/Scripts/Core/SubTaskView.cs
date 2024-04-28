@@ -19,12 +19,12 @@ namespace Tasks.Scripts.Core
             if (subtask.IsCompleted)
             {
                 progressText.text = "Completed";
-                print(TaskManager.Instant.CurrentTask.IsCompleted);
+                // print(TaskManager.Instant.CurrentTask.IsCompleted);
             }
 
             else
             {
-                print(subtask.progress);
+                // print(subtask.progress);
                 progressText.text = subtask.progress + " / " + subtask.requiredProgress;
             }
         }
