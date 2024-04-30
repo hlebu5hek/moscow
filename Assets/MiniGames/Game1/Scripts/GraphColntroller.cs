@@ -1,5 +1,7 @@
 using MiniGames.Scripts;
+using System;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 using Slider = UnityEngine.UI.Slider;
 
 namespace MiniGames.Game1.Scripts
@@ -20,16 +22,16 @@ namespace MiniGames.Game1.Scripts
             _baseMinigame = GetComponentInParent<BaseMinigame>();
         }
 
-        public void ChangeXValueGraph()
+        public void ChangeXValueGraph(Single value)
         {
-            targetGraph.GetComponent<GraphSettings>().GraphScale = new Vector2(Mathf.FloorToInt(sliderX.value), targetGraph.GetComponent<GraphSettings>().GraphScale.y);
+            targetGraph.GetComponent<GraphSettings>().GraphScale = new Vector2(value, targetGraph.GetComponent<GraphSettings>().GraphScale.y);
             UpdateProgress();
             if (CheckComplete()) _baseMinigame.FinishGame();
         }
 
-        public void ChangeYValueGraph()
+        public void ChangeYValueGraph(Single value)
         {
-            targetGraph.GetComponent<GraphSettings>().GraphScale = new Vector2(targetGraph.GetComponent<GraphSettings>().GraphScale.x, Mathf.FloorToInt(sliderY.value));
+            targetGraph.GetComponent<GraphSettings>().GraphScale = new Vector2(targetGraph.GetComponent<GraphSettings>().GraphScale.x, value);
             UpdateProgress();
             if (CheckComplete()) {_baseMinigame.FinishGame();}
         }

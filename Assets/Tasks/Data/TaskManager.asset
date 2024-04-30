@@ -96,7 +96,8 @@ MonoBehaviour:
     - subtaskText: 
       requiredProgress: 1
       progress: 0
-  - taskText: "\u0412\u044B\u0436\u0438\u0442\u044C"
+  - taskText: "\u0421\u043E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0438 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C
+      \u043E\u0442\u0447\u0451\u0442"
     subtasks:
     - subtaskText: 
       requiredProgress: 1
@@ -110,5 +111,10 @@ MonoBehaviour:
     subtasks:
     - subtaskText: 
       requiredProgress: 1
+      progress: 0
+  - taskText: 
+    subtasks:
+    - subtaskText: 
+      requiredProgress: 100
       progress: 0
   currentTaskIndex: 0

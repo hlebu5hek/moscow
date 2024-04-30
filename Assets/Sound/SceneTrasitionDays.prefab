@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6786559071134935849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -333,6 +333,9 @@ MonoBehaviour:
   daysInfos: {fileID: 11400000, guid: 6f5fb7d56b85a7b40b3c4e25ea3ee540, type: 2}
   headerText: {fileID: 6786559070276402649}
   subheaderText: {fileID: 6786559071245236455}
+  OnDayChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &6786559071134935844
 Animator:
   serializedVersion: 5

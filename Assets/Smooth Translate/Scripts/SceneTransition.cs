@@ -24,6 +24,8 @@ public class SceneTransition : MonoBehaviour
         instance.loadingSceneOperation.allowSceneActivation = false;
         
         instance.LoadingProgressBar.fillAmount = 0;
+
+        GameManager.gm.SceneLoaded();
     }
     
     private void Start()

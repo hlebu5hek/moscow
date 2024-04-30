@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInteracter : MonoBehaviour
 {
-    [SerializeField] private InteractableObject _ioE, _ioM;
+    [SerializeField] private InteractableObject _ioE;
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip click, inter;
 
@@ -30,7 +30,7 @@ public class PlayerInteracter : MonoBehaviour
         
         if (freezed) return;
         
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(GameManager.gm.input["interact"]))
         {
             Interact?.Invoke(false);
         }
@@ -39,43 +39,33 @@ public class PlayerInteracter : MonoBehaviour
     private void Interaction(bool m)
     {
         if (freezed) return;
-        
-        source.clip = inter;
-        source.Play();
-        
-        if (m && _ioM) _ioM.OnInteractMouse?.Invoke();
-        else if (_ioE) _ioE.OnInteractE?.Invoke();   
+
+        if (_ioE)
+        {
+            _ioE.OnInteractE?.Invoke();
+
+            source.clip = inter;
+            source.Play();
+        }
     }
 
-    public void SetInteractableObject(InteractableObject io, bool isM)
+    public void SetInteractableObject(InteractableObject io)
     {
         if (freezed) return;
 
-        if (isM) _ioM = io;
-        else
+        if (_ioE)
         {
-            if (_ioE)
-            {
-                if ((_ioE.transform.position - transform.position).magnitude >
-                    (io.transform.position - transform.position).magnitude)
-                    _ioE = io;
-            }
-            else _ioE = io;
+            if ((_ioE.transform.position - transform.position).magnitude >
+                (io.transform.position - transform.position).magnitude)
+                _ioE = io;
         }
+        else _ioE = io;
     }
 
     public void ResetInteractableObject(InteractableObject io)
     {
         if (freezed) return;
 
-        if (io == null)
-        {
-            if(_ioM)
-                _ioM.OnMouseExit?.Invoke();
-            _ioM = null;
-            return;
-        }
-        
         if (_ioE == io) _ioE = null;
     }
 }

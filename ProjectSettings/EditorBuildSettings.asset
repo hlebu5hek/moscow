@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Smooth Translate/Scenes/MainMenu - test.unity
-    guid: 4894940d7a550f8428df521f1c5701ed
+    path: Assets/Scenes/MainMenu.unity
+    guid: d8acfc406a0ca7a4d8e14e85f4696fc1
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 47c1cae382d3d2643bc534c1aea13361
+  - enabled: 0
+    path: Assets/Smooth Translate/Scenes/MainMenu - test.unity
+    guid: 4894940d7a550f8428df521f1c5701ed
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05

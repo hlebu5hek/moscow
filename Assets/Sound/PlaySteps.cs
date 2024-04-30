@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlaySteps : MonoBehaviour
 {
+    public AudioSource source;
     public AudioClip[] steps;
     private bool first;
 
     public void PlayStep()
     {
-       SoundManager.Instance.PlaySoundFX(first ? steps[0] : steps[1], transform.position);
+        source.clip = steps[first ? 0 : 1];
+        source.Play();
         first = !first;
     }
 }

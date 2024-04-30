@@ -18,6 +18,7 @@ namespace DialogSystem.Scripts
         private ScrollRect ScrollRect;
         public int currentText;
         public float textPause = 1;
+        public bool isScrolling;
         [Header("UI")] public Transform textContainer;
         public TMP_Text textPrefab;
         public TMP_Text answerPrefab;
@@ -33,7 +34,8 @@ namespace DialogSystem.Scripts
 
         private void Update()
         {
-            ScrollRect.normalizedPosition = new Vector2(0, 0);
+            if(isScrolling)
+                ScrollRect.normalizedPosition = new Vector2(0, 0);
         }
         
         public void StartDialog(int dialog, BaseMinigame game)
@@ -87,6 +89,8 @@ namespace DialogSystem.Scripts
 
         IEnumerator ShowText()
         {
+            isScrolling = true;
+
             TextData textData = ContentContainer[current].texts[currentText];
             TMP_Text text = !textData.player ? AddText("- ") : AddText("");
 
@@ -112,12 +116,15 @@ namespace DialogSystem.Scripts
                     yield return new WaitForEndOfFrame();
                 NextText(textData.nextIndex);
             }
+
+            isScrolling = false;
         }
 
         public void ShowVariants(TextVariant[] variants)
         {
             ChoiceView choiceView = Instantiate(choiceViewPrefab, textContainer);
             choiceView.SetTexts(this, variants);
+            ScrollRect.normalizedPosition = new Vector2(0, 0);
         }
         
         [SerializeField] private IO_UIOpener parent;

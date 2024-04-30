@@ -9,12 +9,11 @@ public class Final : MonoBehaviour
     [SerializeField] private Animator FinalAnim;
     [SerializeField] private GameObject door;
     
-    private bool isFinal = false;
+    public bool isFinal;
     
     
     public void StartFinal()
     {
-        isFinal = true;
         StartCoroutine(CountDown());
     }
 
@@ -34,7 +33,10 @@ public class Final : MonoBehaviour
 
     public IEnumerator CountDown()
     {
-        yield return new WaitForSeconds(6f);
+        Debug.Log(0);
+        yield return new WaitForSeconds(15);
+        Debug.Log(1);
+        isFinal = true;
         TaskManager.Instant.SetSubtaskProgress(14, 0, 1);
     }
 }

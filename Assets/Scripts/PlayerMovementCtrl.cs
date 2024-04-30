@@ -6,63 +6,48 @@ using UnityEngine;
 
 public class PlayerMovementCtrl : MovementCtrl
 {
-    [SerializeField] private Transform _target;
     [SerializeField] private LayerMask _raycast, _interact;
-    private Camera cam;
-
-    public KeyCode Forward = KeyCode.W,
-        Backward = KeyCode.S,
-        Left = KeyCode.A,
-        Right = KeyCode.D;
 
     public static PlayerMovementCtrl PMC;
     public bool freezed;
     
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         PMC = this;
-        
-        cam = Camera.main;
-        _target.SetParent(null);
         GameManager.Upd += CheckInput;
-        GameManager.FxUpd += GetMousePosition;
     }
 
     private void CheckInput()
     {
         if (freezed) return;
-        
-        if (Input.GetKeyDown(Forward)) AddVector(new(1, 1));
-        if (Input.GetKeyUp(Forward)) AddVector(new(-1, -1));
-        if (Input.GetKeyDown(Backward)) AddVector(new(-1, -1));
-        if (Input.GetKeyUp(Backward)) AddVector(new(1, 1));
-        if (Input.GetKeyDown(Left)) AddVector(new(-1, 1));
-        if (Input.GetKeyUp(Left)) AddVector(new(1, -1));
-        if (Input.GetKeyDown(Right)) AddVector(new(1, -1));
-        if (Input.GetKeyUp(Right)) AddVector(new(-1, 1));
-        if(Input.GetKeyDown(KeyCode.Escape)) SetVector(Vector2.zero);
 
-        LookForward();
-        // Rotate(_target, true);
+        if (Input.GetKey(GameManager.gm.input["forward"])) AddVector(new(1, 1));
+        else AddVector(new(-1, -1));
+        if (Input.GetKey(GameManager.gm.input["backward"])) AddVector(new(-1, -1));
+        else AddVector(new(1, 1));
+        if (Input.GetKey(GameManager.gm.input["left"])) AddVector(new(-1, 1));
+        else AddVector(new(1, -1));
+        if (Input.GetKey(GameManager.gm.input["right"])) AddVector(new(1, -1));
+        else AddVector(new(-1, 1));
+        CheckWrongInput();
 
         Move();
     }
 
-
-    private void GetMousePosition()
+    private void CheckWrongInput()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Vector2 check = Vector2.zero;
+        if (Input.GetKey(GameManager.gm.input["forward"])) check += new Vector2(1, 1);
+        else check += (new Vector2(-1, -1));
+        if (Input.GetKey(GameManager.gm.input["backward"])) check += (new Vector2(-1, -1));
+        else check += (new Vector2(1, 1));
+        if (Input.GetKey(GameManager.gm.input["left"])) check += (new Vector2(-1, 1));
+        else check += (new Vector2(1, -1));
+        if (Input.GetKey(GameManager.gm.input["right"])) check += (new Vector2(1, -1));
+        else check += (new Vector2(-1, 1));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100, _interact))
-        {
-            _target.position = hit.collider.gameObject.transform.position;
-            InteractableObject io = hit.collider.gameObject.GetComponent<InteractableObject>();
-            io.OnMouseEnter?.Invoke();
-            PlayerInteracter.PI.SetInteractableObject(io, true);
-        }
-        else
-        {
-            PlayerInteracter.PI.ResetInteractableObject(null);
-        }
+        if (check != _vector) SetVector(check);
     }
 }

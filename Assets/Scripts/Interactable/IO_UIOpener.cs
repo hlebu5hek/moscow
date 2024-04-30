@@ -20,11 +20,12 @@ public class IO_UIOpener : InteractableObject
     
     protected override void Awake()
     {
-        if(activateOnStart)
-            Activate();
-        
         canvas.SetActive(false);
         HideOutline();
+
+        Deactivate();
+        if (activateOnStart)
+            Activate();
     }
     
     public void Activate()
@@ -32,7 +33,9 @@ public class IO_UIOpener : InteractableObject
         OnPlayerEnter += ShowOutline;
         OnPlayerExit += HideOutline;
         OnInteractE += ShowUI;
-        
+        GetComponent<Collider>().enabled = true;
+
+        _outline.Awake();
         HideOutline();
     }
     
@@ -41,8 +44,9 @@ public class IO_UIOpener : InteractableObject
         OnPlayerEnter -= ShowOutline;
         OnPlayerExit -= HideOutline;
         OnInteractE -= ShowUI;
-        
-        PlayerInteracter.PI.ResetInteractableObject(this);
+        GetComponent<Collider>().enabled = false;
+
+        if(PlayerInteracter.PI) PlayerInteracter.PI.ResetInteractableObject(this);
         
         HideOutline();
     }

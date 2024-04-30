@@ -7,15 +7,21 @@ public class MovementCtrl : MonoBehaviour
 {
     public GameObject body;
 
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed;
-    [SerializeField] private Vector2 _vector;
+    [SerializeField] protected Rigidbody _rb;
+    [SerializeField] protected float _speed;
+    [SerializeField] protected Vector2 _vector;
+    [SerializeField] protected Transform target;
 
-    [SerializeField] private AnimationCurve _ease;
-    [SerializeField] private float _ease_t;
-    [SerializeField] private IEnumerator _ease_enum;
+    [SerializeField] protected AnimationCurve _ease;
+    [SerializeField] protected float _ease_t;
+    [SerializeField] protected IEnumerator _ease_enum;
 
     public float Speed { get; private set; }
+
+    protected virtual void Awake()
+    {
+        target.SetParent(null);
+    }
 
     public virtual void SetVector(Vector2 _v)
     {
@@ -46,33 +52,35 @@ public class MovementCtrl : MonoBehaviour
             body.transform.LookAt(lookAt);
     }
 
-    public void LookForward()
-    {
-        Vector3 lookAt = transform.position + new Vector3(_vector.x, 0, _vector.y);
-        body.transform.LookAt(lookAt);
-    }
-
 
     public virtual void Move()
     {
-        _ease_enum = Ease();
+        _ease_enum = EaseW();
         StopCoroutine(_ease_enum);
         StartCoroutine(_ease_enum);
     }
 
-    protected virtual IEnumerator Ease()
+    protected virtual IEnumerator EaseW()
     {
         Vector3 velA = _rb.velocity;
-        Vector3 velB = new(_vector.x * _speed, velA.y, _vector.y * _speed);
-        Vector3 velT = velA;
+        Vector3 lookAtA = target.position;
+
+        Vector3 velB = new(_vector.normalized.x * _speed, velA.y, _vector.normalized.y * _speed);
+        Vector3 lookAtB = new(_vector.normalized.x + transform.position.x, transform.position.y, _vector.normalized.y + transform.position.z);
 
         for (float t = 0; t < 1; t += _ease_t)
         {
-            velT = velA + (velB - velA) * _ease.Evaluate(t);
+            Vector3 velT = velA + (velB - velA) * _ease.Evaluate(t);
+            target.position = lookAtA + (lookAtB - lookAtA) * _ease.Evaluate(t);
+
             _rb.velocity = velT;
+            if (_vector != Vector2.zero) transform.LookAt(target);
+
             yield return new WaitForEndOfFrame();
         }
 
+        target.position = lookAtB;
+        if (_vector != Vector2.zero) transform.LookAt(target);
         _rb.velocity = velB;
     }
 }

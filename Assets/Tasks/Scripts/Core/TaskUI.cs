@@ -30,6 +30,19 @@ namespace Tasks.Scripts.Core
             taskManager.onSubtaskCompleted.AddListener(UpdateSubtask);
             taskManager.onSubtaskEdited.AddListener(UpdateSubtask);
             UpdateTask();
+
+            if (GameManager.gm.isContinue && PlayerPrefs.HasKey("task")) Continue();
+        }
+
+        public void Continue()
+        {
+            int cur = PlayerPrefs.GetInt("task");
+            if (cur == -1) return;
+
+            for(int i = 0; i < cur+1; i++)
+            {
+                TaskManager.Instant.AddSubtaskProgress(i, 0, 1);
+            }
         }
 
         private void UpdateTask()

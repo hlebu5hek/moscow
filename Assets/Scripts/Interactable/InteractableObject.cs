@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
      [SerializeField] protected RoomOne room;
-     [SerializeField] private Outline _outline;
+     [SerializeField] protected Outline _outline;
      
      public Action OnMouseEnter, OnMouseExit, OnPlayerEnter, OnPlayerExit, OnInteractMouse, OnInteractE;
 
@@ -33,7 +33,7 @@ public class InteractableObject : MonoBehaviour
      protected virtual void OnTriggerEnter(Collider other)
      {
           OnPlayerEnter?.Invoke();
-          PlayerInteracter.PI.SetInteractableObject(this, false);
+          PlayerInteracter.PI.SetInteractableObject(this);
      }
 
      protected virtual void OnTriggerExit(Collider other)
