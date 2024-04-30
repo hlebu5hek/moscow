@@ -42,14 +42,12 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("masterV", 0);
             PlayerPrefs.SetFloat("sfxV", 0);
             PlayerPrefs.SetFloat("musicV", 0);
-
-
         }
         else
         {
-            PlayerPrefs.SetFloat("masterV", 0);
-            PlayerPrefs.SetFloat("sfxV", 0);
-            PlayerPrefs.SetFloat("musicV", 0);
+            SetMasterVolume(PlayerPrefs.GetFloat("masterV"));
+            SetSfxVolume(PlayerPrefs.GetFloat("sfxV"));
+            SetMusicVolume(PlayerPrefs.GetFloat("musicV"));
         }
 
         sliderMaster.SetValueWithoutNotify(PlayerPrefs.GetFloat("masterV"));
@@ -99,6 +97,8 @@ public class GameManager : MonoBehaviour
     public void ShowMenu(bool s)
     {
         if (isMainMenu) return;
+
+        Time.timeScale = s ? 0 : 1;
 
         menuPartOnlyLevel.SetActive(s);
         if (!s) menuOnLevel.SetActive(s);
